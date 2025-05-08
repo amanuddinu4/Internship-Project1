@@ -4,8 +4,8 @@ FROM python:alpine
 # Set the working directory in the container
 WORKDIR /app
 
-# Install Tkinter dependencies
-RUN apt-get update && apt-get install -y python3-tk libnss3 libx11-6 libxext6 libxrender1 libffi-dev && rm -rf /var/lib/apt/lists/*
+# Install Tkinter dependencies (using apk instead of apt-get)
+RUN apk add --no-cache python3-tk libnss3 libx11 libxext libxrender libffi-dev
 
 # Copy the project files into the container
 COPY . .
